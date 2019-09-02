@@ -1,0 +1,38 @@
+.header {
+  position: relative;
+  min-height: 65px;
+  background-color: $black;
+  margin-bottom: 25px;
+
+  &-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 72rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  &-logo {
+    width: 12%;
+    min-width: 138px;
+    height: auto;
+  }
+  &-text {
+    color: $blue;
+  }
+  &-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &--link {
+      color: $blue;
+      text-decoration: none;
+      padding: 1rem;
+      &.active {
+        border-bottom: 2px $white solid;
+      }
+    }
+  }
+}
