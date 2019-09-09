@@ -2,5 +2,9 @@
 @import 'Base';
 @import 'Layout';
 
+@import 'pages/Home';
+
 @import '/components/Header';
 @import '/components/Footer';
+@import '/components/ShowCharacters';
+@import '/components/CharacterCard';
