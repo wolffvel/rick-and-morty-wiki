@@ -15,7 +15,7 @@ const About = () => {
           What technologies are being used in this site?
         </h2>
         <p className={theme ? 'content' : 'content dark'}>
-          This was made with ReactJs, the styling was made with Sass using the
+          This was made with ReactJS, the styling was made with Sass using the
           SCSS syntax and the routing was handled with Reach Router. The data
           was fetched from the{' '}
           <a
