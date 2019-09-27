@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and it was deployed to [this link.]('https://rickandmortyminiwiki.netlify.com/)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and it was deployed to https://rickandmortyminiwiki.netlify.com/.
 
 ## Available Scripts
 
