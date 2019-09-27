@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 import ShowCharacters from '../components/ShowCharacters';
+import Toggle from '../components/Toggle';
 
 const Home = () => {
   const [query, setQuery] = useState('morty');
-
+  const [theme] = useContext(ThemeContext);
   return (
     <div className='page-body'>
-      <h3 className='page-heading'>Type your search below...</h3>
+      <Toggle />
+      <h3 className={theme ? 'page-heading' : 'page-heading dark'}>
+        Type your search below...
+      </h3>
       <input
         type='text'
         value={query}

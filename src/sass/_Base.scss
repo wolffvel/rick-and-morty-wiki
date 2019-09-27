@@ -8,6 +8,10 @@ body {
   background-color: $white;
 }
 
+.body-dark {
+  background-color: $black;
+}
+
 h1,
 h2,
 h3,
@@ -24,10 +28,22 @@ span {
 
 .page-heading {
   padding: 1rem 0;
+  &.dark {
+    color: $white;
+  }
 }
 
 p.content {
-  padding: 1rem;
+  padding: 1.5rem;
   background-color: $light-grey;
   border: $grey solid 0.1rem;
+  &.dark {
+    background-color: $black;
+    color: $white;
+    border: $blue solid 0.1rem;
+  }
+}
+
+a.link-dark {
+  color: $blue;
 }

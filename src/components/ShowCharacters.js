@@ -16,6 +16,7 @@ const ShowCaracters = props => {
   }
   const characters = data.characters.results;
   if (!characters) return <h1>There are no results to show</h1>;
+
   return (
     <div className='show-characters'>
       {characters.map(character => (
