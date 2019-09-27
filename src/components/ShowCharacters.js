@@ -1,21 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
+import { ThemeContext } from '../context/ThemeContext';
 import ChacterCard from './CharacterCard';
 
 const ShowCaracters = props => {
+  const [theme] = useContext(ThemeContext);
   const name = props.query;
   const { loading, error, data } = useQuery(GET_CHARACTERS, {
     variables: { name }
   });
 
-  if (loading) return <h1>Loading</h1>;
+  if (loading) {
+    return (
+      <h1 className={theme ? 'page-heading' : 'page-heading dark'}>
+        Loading...
+      </h1>
+    );
+  }
   if (error) {
     console.log(error);
-    return <h1>There was an error</h1>;
+    return (
+      <h1 className={theme ? 'page-heading' : 'page-heading dark'}>
+        There was an error
+      </h1>
+    );
   }
   const characters = data.characters.results;
-  if (!characters) return <h1>There are no results to show</h1>;
+  if (!characters)
+    return (
+      <h1 className={theme ? 'page-heading' : 'page-heading dark'}>
+        There are no results to show
+      </h1>
+    );
 
   return (
     <div className='show-characters'>

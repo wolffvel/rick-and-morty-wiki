@@ -1,9 +1,14 @@
 .input {
-  border: 1px;
-  border-color: $grey;
+  border: $grey 1px solid;
   border-radius: 15px;
   width: 100%;
   max-width: 50rem;
   padding: 1rem;
   background-color: $light-grey;
+  text-align: center;
+  &.dark {
+    color: $white;
+    background-color: $black;
+    border: $blue 1px solid;
+  }
 }

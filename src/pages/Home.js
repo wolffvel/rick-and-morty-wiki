@@ -19,7 +19,7 @@ const Home = () => {
           setQuery(e.target.value);
           console.log(query);
         }}
-        className='input'
+        className={theme ? 'input' : 'input dark'}
       />
       {query.length > 0 && <ShowCharacters query={query} />}
     </div>

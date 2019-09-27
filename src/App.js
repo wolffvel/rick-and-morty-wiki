@@ -15,7 +15,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <ThemeProvider style={{ backgrondColor: 'blue' }}>
+      <ThemeProvider>
         <Header />
         <Router className='body'>
           <Home path='/' />
