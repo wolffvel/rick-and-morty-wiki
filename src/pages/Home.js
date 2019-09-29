@@ -1,10 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
+import { InputContext } from '../context/InputContext';
 import ShowCharacters from '../components/ShowCharacters';
 import Toggle from '../components/Toggle';
 
 const Home = () => {
-  const [query, setQuery] = useState('morty');
+  const [input, setInput] = useContext(InputContext);
   const [theme] = useContext(ThemeContext);
   return (
     <div className='page-body'>
@@ -14,14 +15,13 @@ const Home = () => {
       </h3>
       <input
         type='text'
-        value={query}
+        value={input}
         onChange={e => {
-          setQuery(e.target.value);
-          console.log(query);
+          setInput(e.target.value);
         }}
         className={theme ? 'input' : 'input dark'}
       />
-      {query.length > 0 && <ShowCharacters query={query} />}
+      {input.length > 0 && <ShowCharacters query={input} />}
     </div>
   );
 };
