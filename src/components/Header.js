@@ -3,7 +3,6 @@ import { Link } from '@reach/router';
 import logo from '../images/logo.png';
 
 const Header = () => {
-  console.log(this);
   const isActive = ({ isCurrent }) => {
     return isCurrent
       ? { className: 'header-nav--link active' }

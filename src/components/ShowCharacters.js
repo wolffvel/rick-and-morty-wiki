@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { ThemeContext } from '../context/ThemeContext';
 import ChacterCard from './CharacterCard';
 
-const ShowCaracters = props => {
+const ShowCharacters = props => {
   const [theme] = useContext(ThemeContext);
   const name = props.query;
   const { loading, error, data } = useQuery(GET_CHARACTERS, {
@@ -27,6 +27,9 @@ const ShowCaracters = props => {
     );
   }
   const characters = data.characters.results;
+  const pages = data.characters.info.pages;
+  console.log(data);
+  console.log(pages);
   if (!characters)
     return (
       <h1 className={theme ? 'page-heading' : 'page-heading dark'}>
@@ -35,19 +38,21 @@ const ShowCaracters = props => {
     );
 
   return (
-    <div className='show-characters'>
-      {characters.map(character => (
-        <ChacterCard
-          key={character.id}
-          name={character.name}
-          imgUrl={character.image}
-          status={character.status}
-          species={character.species}
-          origin={character.origin.name}
-          lastLocation={character.location.name}
-        />
-      ))}
-    </div>
+    <>
+      <div className='show-characters'>
+        {characters.map(character => (
+          <ChacterCard
+            key={character.id}
+            name={character.name}
+            imgUrl={character.image}
+            status={character.status}
+            species={character.species}
+            origin={character.origin.name}
+            lastLocation={character.location.name}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
@@ -75,4 +80,4 @@ const GET_CHARACTERS = gql`
   }
 `;
 
-export default ShowCaracters;
+export default ShowCharacters;

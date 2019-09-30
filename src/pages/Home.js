@@ -8,7 +8,7 @@ const Home = () => {
   const [input, setInput] = useContext(InputContext);
   const [theme] = useContext(ThemeContext);
   return (
-    <div className='page-body'>
+    <div className='page-body home'>
       <Toggle />
       <h3 className={theme ? 'page-heading' : 'page-heading dark'}>
         Type your search below...
@@ -21,7 +21,7 @@ const Home = () => {
         }}
         className={theme ? 'input' : 'input dark'}
       />
-      {input.length > 0 && <ShowCharacters query={input} />}
+      <ShowCharacters query={input} />
     </div>
   );
 };
