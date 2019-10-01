@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Paginate = props => {
-  const { pages, paginate } = props;
+  const { page, pages, paginate } = props;
   const numbers = [];
 
   for (let i = 1; i <= pages; i++) {
@@ -11,7 +11,7 @@ const Paginate = props => {
     <ul className='paginate'>
       {numbers.map(number => (
         <li
-          className='paginate-item'
+          className={page === number ? 'paginate-item active' : 'paginate-item'}
           key={number}
           onClick={() => paginate(number)}
         >

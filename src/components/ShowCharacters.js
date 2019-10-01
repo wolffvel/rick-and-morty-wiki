@@ -58,7 +58,7 @@ const ShowCharacters = props => {
           />
         ))}
       </div>
-      {pages > 1 && <Paginate pages={pages} paginate={paginate} />}
+      {pages > 1 && <Paginate page={page} pages={pages} paginate={paginate} />}
     </>
   );
 };
