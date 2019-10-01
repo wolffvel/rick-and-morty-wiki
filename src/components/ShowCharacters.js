@@ -1,14 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import { ThemeContext } from '../context/ThemeContext';
 import ChacterCard from './CharacterCard';
+import Paginate from './Paginate';
 
 const ShowCharacters = props => {
   const [theme] = useContext(ThemeContext);
+  const [page, setPage] = useState(1);
   const name = props.query;
+
+  useEffect(() => {
+    setPage(1);
+  }, [name]);
+
   const { loading, error, data } = useQuery(GET_CHARACTERS, {
-    variables: { name }
+    variables: { name, page }
   });
 
   if (loading) {
@@ -28,15 +35,14 @@ const ShowCharacters = props => {
   }
   const characters = data.characters.results;
   const pages = data.characters.info.pages;
-  console.log(data);
-  console.log(pages);
+  const paginate = pageNum => setPage(pageNum);
+
   if (!characters)
     return (
       <h1 className={theme ? 'page-heading' : 'page-heading dark'}>
         There are no results to show
       </h1>
     );
-
   return (
     <>
       <div className='show-characters'>
@@ -52,13 +58,14 @@ const ShowCharacters = props => {
           />
         ))}
       </div>
+      {pages > 1 && <Paginate pages={pages} paginate={paginate} />}
     </>
   );
 };
 
 const GET_CHARACTERS = gql`
-  query Characters($name: String) {
-    characters(filter: { name: $name }) {
+  query Characters($name: String, $page: Int) {
+    characters(page: $page, filter: { name: $name }) {
       info {
         pages
         next
